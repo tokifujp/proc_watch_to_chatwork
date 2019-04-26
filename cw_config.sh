@@ -1,4 +1,4 @@
-#i#!/bin/sh
+#!/bin/sh
 
 # Chwtwork Room ID && TOKEN
 CHATWORK_ROOM_ID="${CHATWORK_ROOM_ID}"
