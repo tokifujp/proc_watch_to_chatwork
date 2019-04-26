@@ -28,6 +28,11 @@ CHATWORK_MESSAGE_HEADER="[info][title][${HOSTNAME}] ${PROCEES_NAME} watch :o[/ti
 CHATWORK_MESSAGE_MESSAGE="Process Not Found!! process_name: ${PROCESS_NAME}"
 
 COUNT=`ps -ef | grep ${PROCESS_NAME} | grep -v grep | grep -v $0 | wc -l`
-if [ ${COUNT} = 0 ]; then
+if [ ${COUNT} = 0 -a ! -f ${HOSTNAME}_${PROCESS_NAME}_err.log ]; then
   chatworkSendMessage ${CHATWORK_APP_TOKEN} ${CHATWORK_ROOM_ID} "${CHATWORK_MESSAGE_HEADER}${CHATWORK_MESSAGE_MESSAGE}${CHATWORK_MESSAGE_FOOTER}"
+  echo `date '+%y/%m/%d %H:%M:%S'` 2> ${HOSTNAME}_${PROCESS_NAME}_err.log
+else
+  if [ -f ${HOSTNAME}_${PROCESS_NAME}_err.log ]; then
+    rm ${HOSTNAME}_${PROCESS_NAME}_err.log
+  fi
 fi
