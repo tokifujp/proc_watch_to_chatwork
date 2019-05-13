@@ -31,15 +31,15 @@ function chatworkSendMessage() {
 
 PROCESS_NAME=$1
 CHATWORK_MESSAGE_HEADER="[info][title][${HOSTNAME}] ${PROCEES_NAME} watch :o[/title]"
-CHATWORK_MESSAGE_MESSAGE="Process Not Found!! process_name: ${PROCESS_NAME}"
 CHATWORK_MESSAGE_FOOTER="[/info]"
 
 COUNT=`ps -ef | grep ${PROCESS_NAME} | grep -v grep | grep -v $0 | wc -l`
 if [ ${COUNT} = 0 -a ! -f ${HOSTNAME}_${PROCESS_NAME}_err.log ]; then
-  chatworkSendMessage ${CHATWORK_APP_TOKEN} ${CHATWORK_ROOM_ID} "${CHATWORK_MESSAGE_HEADER}${CHATWORK_MESSAGE_MESSAGE}${CHATWORK_MESSAGE_FOOTER}"
+  chatworkSendMessage ${CHATWORK_APP_TOKEN} ${CHATWORK_ROOM_ID} "${CHATWORK_MESSAGE_HEADER}Process Not Found!! process_name: ${PROCESS_NAME}${CHATWORK_MESSAGE_FOOTER}"
   echo `date '+%y/%m/%d %H:%M:%S'` 2> ${SCRIPT_DIR}/${HOSTNAME}_${PROCESS_NAME}_err.log
 else
   if [ -e ${SCRIPT_DIR}/${HOSTNAME}_${PROCESS_NAME}_err.log ]; then
+    chatworkSendMessage ${CHATWORK_APP_TOKEN} ${CHATWORK_ROOM_ID} "${CHATWORK_MESSAGE_HEADER}Process recovered!! process_name: ${PROCESS_NAME}${CHATWORK_MESSAGE_FOOTER}"
     rm ${SCRIPT_DIR}/${HOSTNAME}_${PROCESS_NAME}_err.log
   fi
 fi
