@@ -27,4 +27,5 @@ Just a few environment variables :
 1. `CHATWORK_ROOM_ID`: as you can read it, the ID of the Chatwork room you want it to post to.
 2. `CHATWORK_APP_TOKEN`: also you'll need to get the Chatwork App Token.
 
-I think you don't wanna expose either of the above.
+Please configure above variables in the `.env` file.  You can `cp .env.sample .env && vim .env` to
+configure :)
