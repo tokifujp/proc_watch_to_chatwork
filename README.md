@@ -17,7 +17,7 @@ $ ./path/to/proc_watch.sh
 You might wanna add it to your `crontab`:
 
 ```
-*/1   *  *  *  *  cd /path/to/proc_watch_to_slack/ && ./proc_watch.sh
+*/1   *  *  *  *  cd /path/to/proc_watch_to_chatwork/ && ./proc_watch.sh
 ```
 
 ## Installations
